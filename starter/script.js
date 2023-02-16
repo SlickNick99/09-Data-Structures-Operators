@@ -180,3 +180,4 @@ add(2, 3, 5);
 // // Default values
 // const [p, q, r = 1] = [8, 9];
 // console.log(p, q, r);
+console.log(adsf);
