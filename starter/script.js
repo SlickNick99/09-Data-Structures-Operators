@@ -31,6 +31,13 @@ const newestRestaurant = {
       close: 24,
     },
   },
+  orderPrices: {
+    ingredients: {
+      pasta: '$8.99',
+      pizza: '12.99',
+      salad: '4.99',
+    },
+  },
   orderDelivery: function ({
     starterIndex: starter,
     mainIndex,
@@ -44,6 +51,9 @@ const newestRestaurant = {
   orderPasta: function (...order) {
     const [fullOrder] = order;
     console.log(fullOrder);
+  },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient), console.log(otherIngredients);
   },
 };
 
@@ -87,9 +97,15 @@ const add = function (...numbers) {
   console.log(sum);
 };
 add(2, 3);
-add(5, 4, 2, 6, 3);
+add(5, 4, 2, 6, 9);
 add(2, 3, 5);
 
+const x = [23, 5, 7];
+add(...x);
+const { ...prices } = newestRestaurant.orderPrices.ingredients;
+console.log(prices);
+
+newestRestaurant.orderPizza('Mushrooms', 'Onion', 'Olives', 'Spinach');
 // THE SPREAD OPERATOR (...)
 // newestRestaurant.orderDelivery({
 //   time: '22:30',
@@ -180,4 +196,3 @@ add(2, 3, 5);
 // // Default values
 // const [p, q, r = 1] = [8, 9];
 // console.log(p, q, r);
-console.log(adsf);
