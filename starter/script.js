@@ -14,6 +14,7 @@ const newestRestaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  numGuests: 5,
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -106,6 +107,61 @@ const { ...prices } = newestRestaurant.orderPrices.ingredients;
 console.log(prices);
 
 newestRestaurant.orderPizza('Mushrooms', 'Onion', 'Olives', 'Spinach');
+
+// Use ANY data type, return ANY data type, short circuiting
+console.log('--------- OR ---------');
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+const guests1 = newestRestaurant.numGuests ? newestRestaurant.numGuests : 10;
+console.log(guests1);
+const guests2 = newestRestaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('-------- AND --------');
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+
+console.log('Hello' && 23 && null && 'Jonas');
+
+if (newestRestaurant.orderPizza) {
+  newestRestaurant.orderPizza('mushrooms', 'spinach');
+}
+
+newestRestaurant.orderPizza &&
+  newestRestaurant.orderPizza('Mushrooms', 'Spinach');
+
+// newestRestaurant.numGuests = 0;
+newestRestaurant.numGuests = 0;
+const guests = newestRestaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = newestRestaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+const rest1 = {
+  name: 'Capri',
+  numGuests: 0,
+};
+const rest2 = {
+  name: 'La Piazza',
+
+  owner: 'Giovanni Rossi',
+};
+// OR ASSGINMENT OPERATOR
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// NULLISH ASSIGNMENT OPERATOR (Null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
 // THE SPREAD OPERATOR (...)
 // newestRestaurant.orderDelivery({
 //   time: '22:30',
