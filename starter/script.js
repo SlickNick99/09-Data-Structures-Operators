@@ -294,6 +294,8 @@ const game = {
   },
 };
 
+//////// CODING CHALLENGE #1 //////////
+
 // 1. Create one player array for each team (variables 'players1' and 'players2')
 // 2. The first player in any player array is the goalkeeper and the others are field players. For Bayern Munich (team 1) create one variable ('gk') with the goalkeeper's name, and one array ('fieldPlayers') with all the remaining 10 field players
 // 3. Create an array 'allPlayers' containing all players of both teams (22 players)
@@ -337,5 +339,88 @@ printGoals('thiago', 'ronalado', 'messi');
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 < team2 && console.log('Team 2 is more likely to win');
 
+////////  //////////
+
+// FOR OF LOOP //
+
 const menu = [...newestRestaurant.starterMenu, ...newestRestaurant.mainMenu];
 for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+////////////////
+
+// ENHANCED OBJECT LITERALS //
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0,
+    close: 24,
+  },
+};
+
+// const newestRestaurant = {
+//   restaurantName: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+//   numGuests: 5,
+//   order: function (starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+
+//   // ES6 enhanced object literals
+//   openingHours,
+
+//   orderPrices: {
+//     ingredients: {
+//       pasta: '$8.99',
+//       pizza: '12.99',
+//       salad: '4.99',
+//     },
+//   },
+//   orderDelivery: function ({
+//     starterIndex: starter,
+//     mainIndex,
+//     time,
+//     address,
+//   }) {
+//     console.log(
+//       `Order recieved! Your delivery ${this.starterMenu[starter]}, and ${this.mainMenu[mainIndex]}, will be delivered at ${time}, to ${address}`
+//     );
+//   },
+//   orderPasta: function (...order) {
+//     const [fullOrder] = order;
+//     console.log(fullOrder);
+//   },
+//   orderPizza: function (mainIngredient, ...otherIngredients) {
+//     console.log(mainIngredient), console.log(otherIngredients);
+//   },
+// };
+
+//////////////////////////
+
+// OPTIONAL CHAINING //
+if (newestRestaurant.openingHours.mon) {
+  console.log(newestRestaurant.openingHours.mon.open);
+}
+
+// WITH optional chaining
+console.log(newestRestaurant.openingHours.mon?.open);
+
+// EXAMPLE
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  const open = newestRestaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+//////////////////////
